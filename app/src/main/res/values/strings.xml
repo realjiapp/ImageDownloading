@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ImageDownloading</string>
+    <string name="start_downloading">Start Downloading</string>
+    <string name="wifiOnly">wifionly</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+</resources>
