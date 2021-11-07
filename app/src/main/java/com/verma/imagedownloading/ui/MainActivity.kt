@@ -49,15 +49,22 @@ class MainActivity : AppCompatActivity() {
             when (it.imageId) {
                 1 -> {
                     progresBarOne.progress = it.progress
+                    txtProgressOne.text = "${it.progress} %"
                 }
                 2 -> {
                     progresBarTwo.progress = it.progress
+                    txtProgressTwo.text = "${it.progress} %"
+
                 }
                 3 -> {
                     progresBarThree.progress = it.progress
+                    txtProgressThree.text = "${it.progress} %"
+
                 }
                 4 -> {
                     progresBarFour.progress = it.progress
+                    txtProgressFour.text = "${it.progress} %"
+
                 }
             }
         })
@@ -70,6 +77,7 @@ class MainActivity : AppCompatActivity() {
                     verifyComplete()
                     imgOne.setImage(it.file!!)
                     progresBarOne.visibility = View.GONE
+                    txtProgressOne.visibility = View.GONE
                     if (!isAsync) {
                         lifecycleScope.launch {
                             viewModel.downloadFile(2, url2, filename2, dirPath!!)
@@ -81,6 +89,8 @@ class MainActivity : AppCompatActivity() {
                     verifyComplete()
                     imgTwo.setImage(it.file!!)
                     progresBarTwo.visibility = View.GONE
+                    txtProgressTwo.visibility = View.GONE
+
                     if (!isAsync) {
                         lifecycleScope.launch {
                             viewModel.downloadFile(3, url2, filename2, dirPath!!)
@@ -92,6 +102,8 @@ class MainActivity : AppCompatActivity() {
                     verifyComplete()
                     imgThree.setImage(it.file!!)
                     progresBarThree.visibility = View.GONE
+                    txtProgressThree.visibility = View.GONE
+
                     if (!isAsync) {
                         lifecycleScope.launch {
                             viewModel.downloadFile(4, url3, filename3, dirPath!!)
@@ -103,35 +115,61 @@ class MainActivity : AppCompatActivity() {
                     verifyComplete()
                     imgFour.setImage(it.file!!)
                     progresBarFour.visibility = View.GONE
+                    txtProgressFour.visibility = View.GONE
+
                 }
             }
         })
 
         btnStart.setOnClickListener {
-            if (btnStart.text.equals(getString(R.string.pause))) {
-                btnStart.text = getString(R.string.resume)
-                viewModel.pause()
-            } else if (btnStart.text.equals(getString(R.string.resume))) {
-
-                viewModel.resume()
-            } else if (btnStart.text.equals(getString(R.string.start_downloading))) {
-                btnStart.text = getString(R.string.pause)
-
-                if (!isAsync) {
-                    lifecycleScope.launch {
-                        viewModel.downloadFile(1, url, filename, dirPath!!)
+       /*     if (Build.VERSION.SDK_INT >= 23) {
+                askForPermissions(
+                    Permission.WRITE_EXTERNAL_STORAGE,
+                    Permission.READ_EXTERNAL_STORAGE
+                ) {
+                    if (it.isAllDenied(
+                            Permission.WRITE_EXTERNAL_STORAGE,
+                            Permission.READ_EXTERNAL_STORAGE
+                        )
+                    ) {
+                        showSnackBarPermission(btnStart, this)
+                    } else {
+                        initiateDownload()
                     }
-                } else {
-                    lifecycleScope.async {
-                        viewModel.downloadFile(1, url, filename, dirPath!!)
-                        viewModel.downloadFile(2, url2, filename2, dirPath!!)
-                        viewModel.downloadFile(3, url3, filename3, dirPath!!)
-                        viewModel.downloadFile(4, url4, filename4, dirPath!!)
-                    }
+                }
+            } else {
+                initiateDownload()
+            }*/
+
+            initiateDownload()
+
+        }
+
+    }
+
+    private fun initiateDownload() {
+        if (btnStart.text.equals(getString(R.string.pause))) {
+            btnStart.text = getString(R.string.resume)
+            viewModel.pause()
+        } else if (btnStart.text.equals(getString(R.string.resume))) {
+
+            viewModel.resume()
+        } else if (btnStart.text.equals(getString(R.string.start_downloading))) {
+            btnStart.text = getString(R.string.pause)
+
+            if (!isAsync) {
+                lifecycleScope.launch {
+                    viewModel.downloadFile(1, url, filename, dirPath!!)
+                }
+            } else {
+                lifecycleScope.async {
+                    viewModel.downloadFile(1, url, filename, dirPath!!)
+                    viewModel.downloadFile(2, url2, filename2, dirPath!!)
+                    viewModel.downloadFile(3, url3, filename3, dirPath!!)
+                    viewModel.downloadFile(4, url4, filename4, dirPath!!)
                 }
             }
         }
-
     }
 
     private fun verifyComplete() {

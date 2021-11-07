@@ -4,4 +4,6 @@
     <string name="wifiOnly">wifionly</string>
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
+    <string name="enable_permission">Enable Permissions from settings</string>
+    <string name="enable">Enable</string>
 </resources>

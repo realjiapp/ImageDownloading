@@ -34,6 +34,47 @@
             app:layout_constraintStart_toEndOf="@id/imgOne"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/txtProgressOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/progresBarOne"
+            app:layout_constraintEnd_toEndOf="@+id/imgOne"
+            app:layout_constraintStart_toStartOf="@+id/imgOne" />
+
+        <TextView
+            android:id="@+id/txtProgressTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/progresBarTwo"
+            app:layout_constraintEnd_toEndOf="@+id/imgTwo"
+            app:layout_constraintStart_toStartOf="@+id/imgTwo" />
+
+        <TextView
+            android:id="@+id/txtProgressThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/progresBarThree"
+            app:layout_constraintEnd_toEndOf="@+id/imgThree"
+            app:layout_constraintStart_toStartOf="@+id/imgThree" />
+
+        <TextView
+            android:id="@+id/txtProgressFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/progresBarFour"
+            app:layout_constraintEnd_toEndOf="@+id/imgFour"
+            app:layout_constraintStart_toStartOf="@+id/imgFour" />
+
+
         <ProgressBar
             android:id="@+id/progresBarTwo"
             style="?android:attr/progressBarStyleHorizontal"
